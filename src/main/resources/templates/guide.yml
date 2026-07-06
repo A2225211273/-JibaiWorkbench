@@ -1,0 +1,60 @@
+# ============================================================
+#  模板：guide —— 新手引导页
+# ============================================================
+id: guide
+title: "&a&l新手引导"
+rows: 3
+permission: ""
+open-sound: "BLOCK_NOTE_BLOCK_PLING"
+allow-drag: false
+allow-take: false
+fill-item:
+  material: LIME_STAINED_GLASS_PANE
+  name: " "
+buttons:
+  step1:
+    slot: 10
+    material: GRASS_BLOCK
+    name: "&a第一步：设置出生点"
+    lore:
+      - "&7使用 /sethome 设置你的家"
+      - ""
+      - "&e» 点击执行 /spawn"
+    actions:
+      - "player-command: spawn"
+  step2:
+    slot: 12
+    material: IRON_PICKAXE
+    name: "&e第二步：领取新手礼包"
+    lore:
+      - "&7前往奖励中心领取新手礼包"
+      - ""
+      - "&e» 点击前往"
+    actions:
+      - "open: reward"
+  step3:
+    slot: 14
+    material: EMERALD
+    name: "&b第三步：逛逛商店"
+    lore:
+      - "&7用金币购买你需要的物品"
+      - ""
+      - "&e» 点击前往"
+    actions:
+      - "open: shop"
+  step4:
+    slot: 16
+    material: PAPER
+    name: "&f第四步：阅读规则"
+    lore:
+      - "&7了解服务器规则，文明游戏"
+      - ""
+      - "&e» 点击查看"
+    actions:
+      - "open: rules"
+  back:
+    slot: 22
+    material: ARROW
+    name: "&f返回主菜单"
+    actions:
+      - "open: main"

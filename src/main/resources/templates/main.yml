@@ -1,0 +1,156 @@
+# ============================================================
+#  模板：main —— 服务器主菜单
+#  用 /jwb create main <菜单ID> 生成到 menus/ 目录后即可编辑。
+#
+#  菜单字段说明：
+#    id            菜单唯一 ID（生成时会自动改写为你指定的 ID）
+#    title         标题，支持 & 颜色码与 <green> 标签、PAPI 变量
+#    rows          行数 1-6
+#    permission    打开菜单所需权限，留空=无限制
+#    open-sound    打开时音效（Bukkit Sound 名，写错会跳过不报错）
+#    close-sound   关闭时音效
+#    fill-item     背景填充物品，铺满所有空槽
+#    allow-drag    是否允许在菜单内拖拽物品（默认 false）
+#    allow-take    是否允许拿走菜单物品（默认 false）
+#    buttons       按钮列表
+#
+#  按钮字段说明：
+#    slot / slots      单槽位 / 多槽位（0 开始）
+#    material          物品类型（Bukkit Material 名）
+#    name / lore       名称与多行描述
+#    amount            数量
+#    glow              发光效果
+#    custom-model-data 自定义模型数据
+#    permission        显示+点击都需要的权限
+#    view-condition    显示条件（不满足则该按钮不显示）
+#    click-condition   点击条件（不满足则点击无效并提示）
+#    actions           默认点击动作（任意点击类型）
+#    left-actions / right-actions / shift-left-actions / shift-right-actions
+#                      特定点击类型动作，优先于 actions
+#
+#  动作格式（字符串 "类型: 参数"）：
+#    open: <菜单ID>              打开另一个菜单
+#    close:                      关闭菜单
+#    back:                       返回上一个菜单
+#    player-command: <指令>      以玩家身份执行（不带 /）
+#    console-command: <指令>     以控制台执行（受 config 安全开关控制）
+#    message: <文本>             发送聊天消息
+#    title: <主标题>|<副标题>    发送标题
+#    actionbar: <文本>           发送动作栏
+#    sound: <音效>[:音量:音调]   播放音效
+#    take-money: <数量>          扣除金币（需 Vault）
+#    give-money: <数量>          给予金币（需 Vault）
+#    give-item: <材质>:<数量>    给予物品
+#    teleport: <世界>,<x>,<y>,<z>[,<yaw>,<pitch>]  传送
+#    server: <子服名>            跳服（需开启 allow-server-jump）
+#    cooldown: <键>:<秒>         设置冷却
+#    mark-reward: <键>           标记奖励已领取
+#
+#  条件格式（字符串 "类型: 参数"）：
+#    permission: <节点>          拥有权限
+#    not-permission: <节点>      不拥有权限
+#    money: <数量>               金币不少于（需 Vault）
+#    cooldown: <键>              指定冷却已结束
+#    reward-unclaimed: <键>      奖励尚未领取
+# ============================================================
+id: main
+title: "&b&l即白服务器 &8» &f主菜单"
+rows: 3
+permission: ""
+open-sound: "BLOCK_NOTE_BLOCK_PLING"
+close-sound: "UI_BUTTON_CLICK"
+allow-drag: false
+allow-take: false
+fill-item:
+  material: GRAY_STAINED_GLASS_PANE
+  name: " "
+buttons:
+  shop:
+    slot: 10
+    material: EMERALD
+    name: "&a&l商店"
+    lore:
+      - "&7浏览并购买服务器商品"
+      - ""
+      - "&e» 点击打开"
+    glow: true
+    actions:
+      - "sound: UI_BUTTON_CLICK"
+      - "open: shop"
+  activity:
+    slot: 11
+    material: CLOCK
+    name: "&e&l活动入口"
+    lore:
+      - "&7查看正在进行的活动"
+      - ""
+      - "&e» 点击打开"
+    actions:
+      - "open: activity"
+  vip:
+    slot: 12
+    material: DIAMOND
+    name: "&b&lVIP 中心"
+    lore:
+      - "&7查看会员特权与每日奖励"
+      - ""
+      - "&e» 点击打开"
+    glow: true
+    actions:
+      - "open: vip"
+  reward:
+    slot: 13
+    material: CHEST
+    name: "&6&l奖励领取"
+    lore:
+      - "&7领取每日 / 每周 / 在线奖励"
+      - ""
+      - "&e» 点击打开"
+    actions:
+      - "open: reward"
+  teleport:
+    slot: 14
+    material: ENDER_PEARL
+    name: "&d&l传送导航"
+    lore:
+      - "&7快速前往服务器各处"
+      - ""
+      - "&e» 点击打开"
+    actions:
+      - "open: teleport"
+  guide:
+    slot: 15
+    material: BOOK
+    name: "&a&l新手引导"
+    lore:
+      - "&7第一次来？看看这里"
+      - ""
+      - "&e» 点击打开"
+    actions:
+      - "open: guide"
+  rules:
+    slot: 16
+    material: PAPER
+    name: "&f&l服务器规则"
+    lore:
+      - "&7了解服务器规则与公告"
+      - ""
+      - "&e» 点击打开"
+    actions:
+      - "open: rules"
+  info:
+    slot: 22
+    material: PLAYER_HEAD
+    name: "&f你好，&e%player_name%"
+    lore:
+      - "&7当前世界：&f%player_world%"
+      - "&7在线人数：&f{online}&7/&f{max_players}"
+      - "&7当前时间：&f{time}"
+    actions:
+      - "close:"
+  close:
+    slot: 26
+    material: BARRIER
+    name: "&c关闭"
+    actions:
+      - "close:"

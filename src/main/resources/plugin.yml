@@ -1,0 +1,89 @@
+name: JibaiWorkbench
+version: '${version}'
+main: me.jibai.workbench.JibaiWorkbenchPlugin
+api-version: '1.20'
+author: 即白
+description: 即白服务器交互工作台 - 让服主在 5 分钟内搭建服务器交互菜单系统。
+website: https://minebbs.com
+
+# Vault / PlaceholderAPI / LuckPerms 均为软依赖：缺失时插件仍可正常启动。
+softdepend:
+  - Vault
+  - PlaceholderAPI
+  - LuckPerms
+
+commands:
+  jworkbench:
+    description: 即白服务器交互工作台主指令
+    usage: /jwb help
+    aliases:
+      - jwb
+
+permissions:
+  # ===== 基础权限 =====
+  jibaiworkbench.use:
+    description: 允许使用工作台基础指令
+    default: true
+  jibaiworkbench.open:
+    description: 允许打开菜单
+    default: true
+  jibaiworkbench.open.*:
+    description: 允许打开任意菜单
+    default: op
+    children:
+      jibaiworkbench.open: true
+  # ===== 管理权限 =====
+  jibaiworkbench.admin:
+    description: 工作台管理员总权限
+    default: op
+    children:
+      jibaiworkbench.reload: true
+      jibaiworkbench.validate: true
+      jibaiworkbench.create: true
+      jibaiworkbench.copy: true
+      jibaiworkbench.preview: true
+      jibaiworkbench.debug: true
+      jibaiworkbench.giveitem: true
+      jibaiworkbench.open.others: true
+      jibaiworkbench.open.*: true
+  jibaiworkbench.reload:
+    description: 允许重载配置
+    default: op
+  jibaiworkbench.validate:
+    description: 允许校验菜单配置
+    default: op
+  jibaiworkbench.create:
+    description: 允许从模板创建菜单
+    default: op
+  jibaiworkbench.copy:
+    description: 允许复制菜单
+    default: op
+  jibaiworkbench.preview:
+    description: 允许预览菜单
+    default: op
+  jibaiworkbench.debug:
+    description: 允许查看菜单调试信息
+    default: op
+  jibaiworkbench.giveitem:
+    description: 允许给玩家发放菜单快捷物品
+    default: op
+  jibaiworkbench.open.others:
+    description: 允许为其他玩家打开菜单
+    default: op
+  # ===== 商店权限 =====
+  jibaiworkbench.shop.use:
+    description: 允许使用商店
+    default: true
+  jibaiworkbench.shop.buy:
+    description: 允许购买商品
+    default: true
+  jibaiworkbench.shop.sell:
+    description: 允许出售商品
+    default: true
+  # ===== 奖励权限 =====
+  jibaiworkbench.reward.claim:
+    description: 允许领取普通奖励
+    default: true
+  jibaiworkbench.reward.vip:
+    description: 允许领取 VIP 奖励
+    default: op

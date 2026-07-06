@@ -1,0 +1,99 @@
+# ============================================================
+#  模板：shop —— 商店菜单
+#  商店按钮通过 shop 段落声明商品；购买 / 出售由插件处理，
+#  无需自己写 take-money 动作（避免扣款成功但发货失败）。
+#
+#  shop 段落字段：
+#    buy-price        购买价（>=0，0 表示免费领取）
+#    sell-price       出售价（>=0，省略=不可出售）
+#    give-item        购买后给予的物品 材质:数量（省略则只跑 commands）
+#    commands         购买后以控制台执行的指令列表（{player} 会替换为玩家名）
+#    permission       购买所需权限
+#    once             true=一次性购买（每人限一次）
+#    daily-limit      每日限购次数（0=不限）
+#    cooldown-sec     两次购买间隔冷却（秒）
+#    stock            全服库存（-1=无限）
+#    confirm          true=购买前弹出确认页
+# ============================================================
+id: shop
+title: "&a&l商店 &8» &f商品列表"
+rows: 4
+permission: "jibaiworkbench.shop.use"
+open-sound: "BLOCK_NOTE_BLOCK_PLING"
+allow-drag: false
+allow-take: false
+fill-item:
+  material: BLACK_STAINED_GLASS_PANE
+  name: " "
+buttons:
+  diamond:
+    slot: 10
+    material: DIAMOND
+    name: "&b钻石 x8"
+    lore:
+      - "&7购买价：&a100 金币"
+      - "&7出售价：&e60 金币"
+      - ""
+      - "&e左键购买 &7/ &e右键出售"
+    shop:
+      buy-price: 100.0
+      sell-price: 60.0
+      give-item: "DIAMOND:8"
+      daily-limit: 10
+      cooldown-sec: 0
+      stock: -1
+      confirm: false
+  golden_apple:
+    slot: 11
+    material: GOLDEN_APPLE
+    name: "&6金苹果 x4"
+    lore:
+      - "&7购买价：&a80 金币"
+      - ""
+      - "&e左键购买"
+    shop:
+      buy-price: 80.0
+      give-item: "GOLDEN_APPLE:4"
+      confirm: true
+  vip_rank:
+    slot: 13
+    material: NETHER_STAR
+    name: "&d&lVIP 会员（示例）"
+    lore:
+      - "&7购买价：&a1000 金币"
+      - "&7一次性购买，购买后授予 VIP 权限组"
+      - ""
+      - "&c需要接入权限插件与指令"
+      - "&e左键购买"
+    glow: true
+    shop:
+      buy-price: 1000.0
+      once: true
+      confirm: true
+      commands:
+        - "lp user {player} parent add vip"
+  exp_bottle:
+    slot: 15
+    material: EXPERIENCE_BOTTLE
+    name: "&a经验瓶 x16"
+    lore:
+      - "&7购买价：&a50 金币"
+      - "&7每日限购 3 次"
+      - ""
+      - "&e左键购买"
+    shop:
+      buy-price: 50.0
+      give-item: "EXPERIENCE_BOTTLE:16"
+      daily-limit: 3
+  back:
+    slot: 30
+    material: ARROW
+    name: "&f返回主菜单"
+    actions:
+      - "open: main"
+  close:
+    slot: 32
+    material: BARRIER
+    name: "&c关闭"
+    actions:
+      - "close:"

@@ -1,0 +1,84 @@
+# ============================================================
+#  模板：vip —— VIP 菜单
+#  按权限显示不同按钮：view-condition 控制是否显示。
+#  {group} 变量显示玩家当前权限组（接入 LuckPerms 时更准确）。
+# ============================================================
+id: vip
+title: "&b&lVIP 中心"
+rows: 3
+permission: ""
+open-sound: "BLOCK_NOTE_BLOCK_PLING"
+allow-drag: false
+allow-take: false
+fill-item:
+  material: LIGHT_BLUE_STAINED_GLASS_PANE
+  name: " "
+buttons:
+  status:
+    slot: 4
+    material: PLAYER_HEAD
+    name: "&f%player_name% 的会员状态"
+    lore:
+      - "&7当前权限组：&b{group}"
+      - "&7金币：&e{balance}"
+    actions:
+      - "close:"
+  privilege:
+    slot: 11
+    material: BOOK
+    name: "&b&lVIP 特权说明"
+    lore:
+      - "&7• 每日额外奖励"
+      - "&7• 专属传送点"
+      - "&7• 更多背包空间"
+      - ""
+      - "&e» 点击查看详情"
+    actions:
+      - "message: &bVIP 特权：每日奖励、专属传送、更多空间（示例文案）"
+  daily:
+    slot: 13
+    material: CHEST
+    name: "&6VIP 每日奖励"
+    lore:
+      - "&7每天可领取一次 VIP 专属奖励"
+      - ""
+      - "&e» 点击领取"
+    glow: true
+    permission: "jibaiworkbench.reward.vip"
+    reward:
+      key: "vip_daily"
+      type: "daily"
+      give-item: "DIAMOND:5"
+      commands:
+        - "give {player} gold_ingot 3"
+    lore-locked:
+      - "&c需要 VIP 权限才能领取"
+  vip_only:
+    slot: 15
+    material: NETHER_STAR
+    name: "&d&lVIP 专属指令"
+    lore:
+      - "&7仅 VIP 可见与使用"
+      - ""
+      - "&e» 点击执行"
+    view-condition:
+      - "permission: jibaiworkbench.reward.vip"
+    actions:
+      - "player-command: kit vip"
+      - "message: &d已尝试领取 VIP 礼包（示例）"
+  buy:
+    slot: 22
+    material: EMERALD
+    name: "&a如何购买 VIP"
+    lore:
+      - "&7访问官网或联系管理员购买"
+      - ""
+      - "&e» 点击查看"
+    actions:
+      - "message: &a购买方式：请访问 www.example.com 或联系管理员"
+  back:
+    slot: 26
+    material: ARROW
+    name: "&f返回主菜单"
+    actions:
+      - "open: main"

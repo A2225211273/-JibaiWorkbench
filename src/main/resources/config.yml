@@ -1,0 +1,54 @@
+# ============================================================
+#  JibaiWorkbench 主配置文件 config.yml
+#  即白服务器交互工作台
+#  作者：即白  邮箱：jibai0517@gamil.com
+#  所有中文使用 UTF-8 编码，请勿用记事本另存为 ANSI。
+# ============================================================
+
+# 插件前缀，会拼在部分消息前（messages.yml 中用 {prefix} 引用）
+prefix: "&8[&b即白工作台&8] "
+
+# 默认语言（预留，目前仅内置中文 messages.yml）
+language: "zh_CN"
+
+# 依赖开关：设为 true 时尝试对接对应插件，缺失时自动降级为不可用且不报错。
+hooks:
+  vault: true            # 经济，商店功能需要
+  placeholderapi: true   # 变量占位符
+  luckperms: true        # 权限组显示（可选，Bukkit 权限始终可用）
+
+# 打开菜单相关
+menu:
+  # 未指定菜单时的默认菜单 ID
+  default-menu: "main"
+  # 打开菜单全局冷却（毫秒），防止刷屏点击；0 表示不限制
+  open-cooldown-ms: 300
+
+# 动作安全开关
+actions:
+  # 是否允许「控制台执行指令」动作（console-command）。
+  # 出于安全考虑默认开启，但服主应确保菜单配置可信；若关闭，则此类动作被跳过并记录警告。
+  allow-console-command: true
+  # 是否允许「跳服」动作（server，需 BungeeCord / Velocity）
+  allow-server-jump: false
+
+# 数据保存方式：yaml（默认，已实现） / sqlite / mysql（预留接口，未启用时回退 yaml）
+storage:
+  type: "yaml"
+  # 以下仅在 type=mysql 时使用（预留，当前版本回退到 yaml）
+  mysql:
+    host: "localhost"
+    port: 3306
+    database: "jibaiworkbench"
+    username: "root"
+    password: ""
+    table-prefix: "jwb_"
+
+# 配置校验
+validation:
+  # 严格模式：启动时若菜单存在「错误级」问题，是否拒绝加载该菜单（true）
+  # 还是仅记录警告并跳过问题按钮（false）。无论如何都不会导致整个插件崩溃。
+  strict: false
+
+# 调试开关：开启后控制台输出更多菜单加载 / 动作执行日志
+debug: false

@@ -1,0 +1,56 @@
+# ============================================================
+#  模板：rules —— 服务器规则 / 公告页
+# ============================================================
+id: rules
+title: "&f&l服务器规则与公告"
+rows: 3
+permission: ""
+open-sound: "ITEM_BOOK_PAGE_TURN"
+allow-drag: false
+allow-take: false
+fill-item:
+  material: WHITE_STAINED_GLASS_PANE
+  name: " "
+buttons:
+  rule1:
+    slot: 10
+    material: BOOK
+    name: "&e规则一：文明游戏"
+    lore:
+      - "&7禁止辱骂、刷屏、恶意骚扰"
+      - "&7违者将被禁言或封禁"
+  rule2:
+    slot: 11
+    material: BOOK
+    name: "&e规则二：禁止作弊"
+    lore:
+      - "&7禁止使用外挂、材质透视、自动化脚本"
+      - "&7一经发现永久封禁"
+  rule3:
+    slot: 12
+    material: BOOK
+    name: "&e规则三：保护环境"
+    lore:
+      - "&7禁止恶意破坏他人建筑"
+      - "&7公共区域请勿随意改动"
+  notice:
+    slot: 14
+    material: PAPER
+    name: "&b服务器公告"
+    lore:
+      - "&7欢迎来到即白服务器！"
+      - "&7当前日期：&f{date}"
+      - "&7在线人数：&f{online}&7/&f{max_players}"
+  contact:
+    slot: 16
+    material: WRITABLE_BOOK
+    name: "&a联系管理员"
+    lore:
+      - "&7QQ 群：123456789"
+      - "&7官网：www.example.com"
+  back:
+    slot: 22
+    material: ARROW
+    name: "&f返回主菜单"
+    actions:
+      - "open: main"

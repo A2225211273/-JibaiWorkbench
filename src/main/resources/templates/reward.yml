@@ -1,0 +1,85 @@
+# ============================================================
+#  模板：reward —— 奖励领取页
+#  reward 段落声明奖励，插件负责记录领取状态与冷却，
+#  不需要自己写 mark-reward 动作。
+#
+#  reward 段落字段：
+#    key           奖励唯一键（用于记录领取状态）
+#    type          daily=每日 / weekly=每周 / once=一次性 / playtime=在线时长
+#    give-item     领取时给予物品 材质:数量
+#    commands      领取时以控制台执行的指令（{player} 替换玩家名）
+#    permission    领取所需权限
+#    playtime-min  type=playtime 时要求的在线分钟数
+# ============================================================
+id: reward
+title: "&6&l奖励领取中心"
+rows: 3
+permission: "jibaiworkbench.reward.claim"
+open-sound: "BLOCK_NOTE_BLOCK_PLING"
+allow-drag: false
+allow-take: false
+fill-item:
+  material: ORANGE_STAINED_GLASS_PANE
+  name: " "
+buttons:
+  daily:
+    slot: 10
+    material: CHEST
+    name: "&a每日奖励"
+    lore:
+      - "&7每天可领取一次"
+      - ""
+      - "&e» 点击领取"
+    glow: true
+    reward:
+      key: "daily"
+      type: "daily"
+      give-item: "DIAMOND:2"
+      commands:
+        - "give {player} bread 8"
+  weekly:
+    slot: 12
+    material: ENDER_CHEST
+    name: "&b每周奖励"
+    lore:
+      - "&7每周可领取一次"
+      - ""
+      - "&e» 点击领取"
+    reward:
+      key: "weekly"
+      type: "weekly"
+      give-item: "EMERALD:5"
+  once:
+    slot: 14
+    material: NETHER_STAR
+    name: "&d新手礼包"
+    lore:
+      - "&7每个玩家仅可领取一次"
+      - ""
+      - "&e» 点击领取"
+    glow: true
+    reward:
+      key: "newbie"
+      type: "once"
+      give-item: "IRON_INGOT:16"
+      commands:
+        - "give {player} cooked_beef 16"
+  playtime:
+    slot: 16
+    material: CLOCK
+    name: "&e在线时长奖励"
+    lore:
+      - "&7在线满 60 分钟后可领取"
+      - ""
+      - "&e» 点击领取"
+    reward:
+      key: "playtime_60"
+      type: "playtime"
+      playtime-min: 60
+      give-item: "GOLD_INGOT:5"
+  back:
+    slot: 22
+    material: ARROW
+    name: "&f返回主菜单"
+    actions:
+      - "open: main"

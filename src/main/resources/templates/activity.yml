@@ -1,0 +1,56 @@
+# ============================================================
+#  模板：activity —— 活动入口
+#  活动菜单一般作为入口，对接其他插件的活动指令。
+# ============================================================
+id: activity
+title: "&e&l活动中心"
+rows: 3
+permission: ""
+open-sound: "BLOCK_NOTE_BLOCK_PLING"
+allow-drag: false
+allow-take: false
+fill-item:
+  material: YELLOW_STAINED_GLASS_PANE
+  name: " "
+buttons:
+  double_exp:
+    slot: 11
+    material: EXPERIENCE_BOTTLE
+    name: "&a双倍经验活动"
+    lore:
+      - "&7状态：&a进行中"
+      - "&7时间：&f全天开放"
+      - ""
+      - "&e» 点击参加"
+    glow: true
+    actions:
+      - "message: &a你参加了双倍经验活动（示例，可对接活动指令）"
+      - "close:"
+  boss:
+    slot: 13
+    material: DRAGON_HEAD
+    name: "&c世界 Boss"
+    lore:
+      - "&7状态：&e即将开始"
+      - "&7倒计时：&f%server_time_HH:mm:ss%"
+      - ""
+      - "&e» 点击查看规则"
+    actions:
+      - "message: &e世界 Boss 将在整点刷新（示例倒计时占位）"
+  lottery:
+    slot: 15
+    material: CHEST_MINECART
+    name: "&d幸运抽奖"
+    lore:
+      - "&7状态：&a进行中"
+      - ""
+      - "&e» 点击参加"
+    actions:
+      - "player-command: spawn"
+      - "message: &a已尝试执行抽奖指令（示例）"
+  back:
+    slot: 22
+    material: ARROW
+    name: "&f返回主菜单"
+    actions:
+      - "open: main"

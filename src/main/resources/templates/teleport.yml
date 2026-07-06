@@ -1,0 +1,68 @@
+# ============================================================
+#  模板：teleport —— 传送导航页
+#  teleport 动作格式：teleport: <世界>,<x>,<y>,<z>[,<yaw>,<pitch>]
+#  请把下方坐标改成你服务器实际存在的世界与坐标。
+# ============================================================
+id: teleport
+title: "&d&l传送导航"
+rows: 3
+permission: ""
+open-sound: "ENTITY_ENDERMAN_TELEPORT"
+allow-drag: false
+allow-take: false
+fill-item:
+  material: PURPLE_STAINED_GLASS_PANE
+  name: " "
+buttons:
+  spawn:
+    slot: 10
+    material: BEACON
+    name: "&b主城传送"
+    lore:
+      - "&7返回服务器主城"
+      - ""
+      - "&e» 点击传送"
+    glow: true
+    actions:
+      - "player-command: spawn"
+      - "close:"
+  wild:
+    slot: 12
+    material: GRASS_BLOCK
+    name: "&a野外传送"
+    lore:
+      - "&7随机传送到野外"
+      - ""
+      - "&e» 点击传送"
+    actions:
+      - "sound: ENTITY_ENDERMAN_TELEPORT"
+      - "teleport: world,100,80,100"
+      - "close:"
+  shop_area:
+    slot: 14
+    material: EMERALD_BLOCK
+    name: "&e商业区"
+    lore:
+      - "&7前往玩家商业区"
+      - ""
+      - "&e» 点击传送"
+    actions:
+      - "teleport: world,0,80,0"
+      - "close:"
+  home:
+    slot: 16
+    material: RED_BED
+    name: "&c回家"
+    lore:
+      - "&7传送到你的家"
+      - ""
+      - "&e» 点击执行 /home"
+    actions:
+      - "player-command: home"
+      - "close:"
+  back:
+    slot: 22
+    material: ARROW
+    name: "&f返回主菜单"
+    actions:
+      - "open: main"

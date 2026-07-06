@@ -1,0 +1,67 @@
+# ============================================================
+#  JibaiWorkbench 消息文件 messages.yml
+#  所有玩家可见文本集中在此，方便服主修改。
+#  颜色支持：
+#    - 传统 & 颜色码，如 &a &c &e
+#    - MiniMessage 风格标签，如 <green> <gold> <red>（会被解析为对应颜色）
+#  变量：{prefix} 会替换为 config.yml 中的 prefix，其余变量见各条说明。
+#  中文使用 UTF-8 编码。
+# ============================================================
+
+# 通用
+no-permission: "{prefix}&c你没有权限执行此操作。"
+player-only: "{prefix}&c该操作只能由玩家执行。"
+unknown-command: "{prefix}&c未知子指令，输入 &e/jwb help &c查看帮助。"
+usage-error: "{prefix}&c指令用法错误：&e{usage}"
+
+# 菜单
+menu-not-found: "{prefix}&c菜单不存在：&e{menu}"
+menu-opened: "{prefix}&a已为你打开菜单：&e{menu}"
+menu-opened-other: "{prefix}&a已为 &e{player} &a打开菜单：&e{menu}"
+menu-no-open-permission: "{prefix}&c你没有权限打开该菜单。"
+menu-open-cooldown: "{prefix}&e操作过快，请稍后再试。"
+target-player-offline: "{prefix}&c目标玩家不在线：&e{player}"
+
+# 配置 / 重载 / 校验
+reload-start: "{prefix}&7正在重载配置与菜单..."
+reload-done: "{prefix}&a重载完成，共加载 &e{menus} &a个菜单、&e{templates} &a个模板。"
+validate-start: "{prefix}&7正在校验菜单配置..."
+validate-clean: "{prefix}&a校验完成，未发现问题。共 &e{menus} &a个菜单。"
+validate-summary: "{prefix}&e校验完成：&c{errors} 个错误&e，&6{warnings} 个警告&e。详见控制台。"
+
+# 模板 / 创建 / 复制
+template-not-found: "{prefix}&c模板不存在：&e{template}&c。可用模板：&e{list}"
+menu-already-exists: "{prefix}&c菜单已存在：&e{menu}"
+menu-created: "{prefix}&a已从模板 &e{template} &a创建菜单：&e{menu}"
+menu-copied: "{prefix}&a已复制菜单 &e{source} &a为 &e{target}"
+menu-copy-source-missing: "{prefix}&c源菜单不存在：&e{source}"
+
+# 快捷物品
+giveitem-done: "{prefix}&a已给予 &e{player} &a一个打开 &e{menu} &a的快捷物品。"
+giveitem-received: "{prefix}&a你获得了一个打开菜单的快捷物品。"
+
+# 经济 / 商店
+economy-unavailable: "{prefix}&c经济功能不可用（未安装 Vault 或经济插件）。"
+economy-not-enough: "{prefix}&c金币不足，需要 &e{cost}&c，你当前拥有 &e{balance}&c。"
+shop-buy-success: "{prefix}&a购买成功：&e{item} &a花费 &e{cost} &a金币。"
+shop-buy-failed: "{prefix}&c购买失败：{reason}"
+shop-sell-success: "{prefix}&a出售成功：&e{item} &a获得 &e{price} &a金币。"
+shop-sell-failed: "{prefix}&c出售失败：{reason}"
+shop-out-of-stock: "{prefix}&c该商品已售罄。"
+shop-limit-reached: "{prefix}&c你已达到该商品的限购次数。"
+shop-inventory-full: "{prefix}&c你的背包已满，请清理后再试。"
+shop-confirm-open: "{prefix}&e请在确认页面再次点击以完成购买。"
+
+# 奖励
+reward-claimed: "{prefix}&a奖励领取成功！"
+reward-already-claimed: "{prefix}&e你已经领取过该奖励了。"
+reward-not-ready: "{prefix}&e奖励尚未就绪，冷却剩余：&f{time}"
+reward-no-permission: "{prefix}&c你没有权限领取该奖励。"
+
+# 冷却
+cooldown-active: "{prefix}&e请稍候，冷却剩余：&f{time}"
+
+# 动作 / 安全
+console-command-disabled: "{prefix}&c控制台指令动作已被管理员禁用。"
+server-jump-disabled: "{prefix}&c跳服功能未启用。"
+action-failed: "{prefix}&c动作执行失败，请联系管理员查看控制台。"
